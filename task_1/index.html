@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Свои ключи долго не подходили, стащил ключ из поиска =) -->
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=e4510751-8b4a-438c-8656-a8c07b78abe0&lang=ru_RU" type="text/javascript"></script>
+    <script defer src="https://spreadsheets.google.com/feeds/cells/1NqORzVajrsfS3u8vJnxMcm2KW8YAnyBItdIvZakqaeE/1/public/values?alt=json-in-script&callback=addresses.init"></script>
+</head>
+
+<body>
+    <div id="map" style="width: 600px; height: 400px"></div>
+    <script src="script.js"></script>
+    <div id="addresses_container"></div>
+    <script defer src="main.js"></script>
+</body>
+
+</html>
