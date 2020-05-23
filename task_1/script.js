@@ -1,6 +1,6 @@
 "use strict";
 const yandexMap = (function() {
-    var myMap = new Object();
+    var myMap;
 
     return {
         init: function() {
@@ -26,6 +26,23 @@ const yandexMap = (function() {
 
     };
 })();
+
+
+const addresses = (function() {
+    var addr = [];
+    return {
+        init: function(spreadsheetdata) {
+            var raw_addresses = (spreadsheetdata.feed.entry.map(cell => cell.content.$t
+            ));
+            var beginFromFirstAddress = 1
+            addr = raw_addresses.slice(beginFromFirstAddress);
+        },
+        get: function() {
+            return addr;
+        },
+    };
+})();
+
 
 const addressesOnMap = (function() {
     var myMap;
@@ -74,35 +91,28 @@ const addressesOnMap = (function() {
 })();
 
 
-const addresses = (function() {
-    var addr = [];
+const renderedAddressesOnPage = (function() {
+    var myMap;
+    var addrOnMap;
+
     return {
-        init: function(spreadsheetdata) {
-            var raw_addresses = (spreadsheetdata.feed.entry.map(function(cell) {
-                return cell.content.$t
-            }));
-            var beginFromFirstAddress = 1
-            addr = raw_addresses.slice(beginFromFirstAddress);
-        },
-        get: function() {
-            return addr;
-        },
-        render: function() {
-            var addr = addresses.get();
+        add: function(addr) {
             var htmlAddresses = '';
             for (let i = 0; i < addr.length; i++) {
-                htmlAddresses += '<p onclick=\"addresses.centerAddressOnMap(this)\">' + addr[i] + '</p>';
+                htmlAddresses += '<p onclick=\"renderedAddressesOnPage.centerAddressOnMap(this)\">' + addr[i] + '</p>';
             }
             var container = document.getElementById('addresses_container');
             container.innerHTML = htmlAddresses;
         },
         centerAddressOnMap: function(e) {
+            myMap = yandexMap.get();
+            addrOnMap = addressesOnMap.get();
             var addrToCenter = e.innerHTML;
-            if (addressesOnMap.get()[addrToCenter] === undefined) {
+            if (addrOnMap[addrToCenter] === undefined) {
                 alert("Адрес '" + addrToCenter + "' не найден!");
             } else {
-                yandexMap.get().setCenter(addressesOnMap.get()[addrToCenter]);
+                myMap.setCenter(addrOnMap[addrToCenter]);
             };
         },
-    };
+    }
 })();
