@@ -3,16 +3,19 @@
     "test_module",
     'summary':
     """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        Простейший модуль с заисимостями""",
     'description':
     """
-        Long description of module's purpose
+        Данный модуль зависим от следующих приложений:
+            • sale
+            • website
+            • project
+            • point_of_sale
     """,
     'author':
-    "My Company",
+    "Emil",
     'website':
-    "http://www.yourcompany.com",
+    "http://www.vk.com",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/12.0/odoo/addons/base/data/ir_module_category_data.xml

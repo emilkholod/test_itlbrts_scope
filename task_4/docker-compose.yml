@@ -7,7 +7,7 @@ services:
     ports:
       - "8069:8069"
     volumes:
-       - test_module:/var/lib/odoo/test_module
+       - ./test_module:/mnt/extra-addons/test_module
   db:
     image: postgres:10
     environment:
