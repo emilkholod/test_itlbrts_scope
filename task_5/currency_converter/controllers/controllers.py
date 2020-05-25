@@ -13,7 +13,7 @@ class CurrencyConverter(http.Controller):
 
     @http.route('/currencies/eur/', auth='public', website=True)
     def currencies(self, **kw):
-        TableOfCosts = http.request.env['currency_converter.table_of_costs']
+        TableOfCosts = http.request.env['res.currency']
         print('Hello world!!!')
         print(TableOfCosts.search([]))
         return "Hello world2"

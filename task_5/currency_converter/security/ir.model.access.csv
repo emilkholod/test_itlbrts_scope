@@ -1,2 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_currency_converter_table_of_costs,currency_converter.table_of_costs,model_table_of_costs,,1,0,0,0
+access_currency_converter_table_of_costs,access_currency_converter_table_of_costs,model_currency_converter_table_of_costs,,1,1,1,1
