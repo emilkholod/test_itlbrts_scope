@@ -3,7 +3,7 @@ from odoo import http
 
 
 class CurrencyConverter(http.Controller):
-    @http.route('/currency_converter/currency_converter/', auth='public')
+    @http.route('/wow/', auth='public')
     def index(self, **kw):
         return "Hello, world"
 
