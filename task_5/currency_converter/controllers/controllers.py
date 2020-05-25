@@ -8,17 +8,15 @@ class CurrencyConverter(http.Controller):
         return "Hello, world"
 
     @http.route('/currencies/', auth='public', website=True)
-    def currencies(self, **kw):
-        return {
-            'type': 'ir.actions.act_url',
-            'url': '/eur/',
-            'target': 'self',
-            'res_id': self.id,
-        }
+    def redirect_to_eur(self, **kw):
+        return http.request.redirect('/currencies/eur/')
 
     @http.route('/currencies/eur/', auth='public', website=True)
     def currencies(self, **kw):
-        return "Hello world"
+        TableOfCosts = http.request.env['currency_converter.table_of_costs']
+        print('Hello world!!!')
+        print(TableOfCosts.search([]))
+        return "Hello world2"
 
 #     @http.route('/currency_converter/currency_converter/objects/<model("currency_converter.currency_converter"):obj>/', auth='public')
 #     def object(self, obj, **kw):
