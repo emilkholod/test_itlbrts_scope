@@ -18,5 +18,11 @@
         <!--     </t> -->
         <!--   </dl> -->
         <!-- </template> -->
+        <template id="index">
+            <title>Academy</title>
+            <t t-foreach="currency_rates" t-as="currency_rate">
+                <p><t t-esc="teacher.id"/> <t t-esc="teacher.currency_id"/><t t-esc="teacher.rate"/></p>
+            </t>
+        </template>
     </data>
 </odoo>
