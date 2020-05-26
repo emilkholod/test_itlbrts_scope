@@ -19,12 +19,14 @@ class CurrencyConverter(http.Controller):
         CurrencyRate = http.request.env['res.currency.rate']
         list_of_curr_rates = CurrencyRate.search([]).read(
             ['id', 'currency_id', 'rate'])
+
         out = {}
         for curr_rate in list_of_curr_rates:
             out[curr_rate['currency_id'][1]] = curr_rate['rate']
 
         for k, v in out.items():
             out[k] = v / out[new_base_curr_name.upper()]
+        # sorted_out = dict(sorted(out.items(), key=lambda x: x[0]))
         return http.request.render('currency_converter.wow',
                                    {'currency_rates': out})
         # return http.request.render('currency_converter.wow', {})

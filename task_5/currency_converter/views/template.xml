@@ -2,14 +2,30 @@
 <odoo>
     <template id="wow">
         <t t-call="website.layout">
-            Hello world!
-            <t t-foreach="currency_rates" t-as="currency_rate">
-                <p>
-                    <a t-attf-href="/{{currency_rate}}/">
-                        <t t-esc="currency_rate"/>
-                    </a>
-                    <t t-esc="currency_rate_value"/></p>
-            </t>
+            <table class="table-striped table">
+                <thead style="font-size: 23px;">
+                    <tr>
+                        <h6>
+                            <b>
+                                <th>Currency name</th>
+                                <th>Currency rate</th>
+                            </b>
+                        </h6>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="currency_rates" t-as="currency_rate">
+                        <tr>
+                            <td>
+                                <a t-attf-href="/currencies/{{currency_rate}}/">
+                                    <t t-esc="currency_rate"/>
+                                </a>
+                            </td>
+                            <td><t t-esc="currency_rate_value"/></p>
+                        </td>
+                    </t>
+                </tbody>
+            </table>
         </t>
     </template>
 </odoo>
