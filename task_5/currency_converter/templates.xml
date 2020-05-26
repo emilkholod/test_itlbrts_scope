@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
         <!-- <template id="listing"> -->
@@ -18,13 +19,7 @@
         <!-- </t> -->
         <!-- </dl> -->
         <!-- </template> -->
-        <!-- <template id="currency_converter.index">
-            <title>Currency Rate</title>
-            <t t-foreach="currency_rates" t-as="currency_rate">
-                <p><t t-esc="currency_rate.id"/>
-                    <t t-esc="currency_rate.currency_id"/><t t-esc="currency_rate.rate"/>
-                </p>
-            </t>
+        <!-- <template id="currency_converter.index"> <title>Currency Rate</title> <t t-foreach="currency_rates" t-as="currency_rate"> <p><t t-esc="currency_rate.id"/> <t t-esc="currency_rate.currency_id"/><t t-esc="currency_rate.rate"/> </p> </t>
         </template> -->
         <template id="wow">
             <title>Currency Rate</title>
