@@ -1,28 +1,33 @@
 <odoo>
     <data>
         <!-- <template id="listing"> -->
-        <!--   <ul> -->
-        <!--     <li t-foreach="objects" t-as="object"> -->
-        <!--       <a t-attf-href="#{ root }/objects/#{ object.id }"> -->
-        <!--         <t t-esc="object.display_name"/> -->
-        <!--       </a> -->
-        <!--     </li> -->
-        <!--   </ul> -->
+        <!-- <ul> -->
+        <!-- <li t-foreach="objects" t-as="object"> -->
+        <!-- <a t-attf-href="#{ root }/objects/#{ object.id }"> -->
+        <!-- <t t-esc="object.display_name"/> -->
+        <!-- </a> -->
+        <!-- </li> -->
+        <!-- </ul> -->
         <!-- </template> -->
         <!-- <template id="object"> -->
-        <!--   <h1><t t-esc="object.display_name"/></h1> -->
-        <!--   <dl> -->
-        <!--     <t t-foreach="object._fields" t-as="field"> -->
-        <!--       <dt><t t-esc="field"/></dt> -->
-        <!--       <dd><t t-esc="object[field]"/></dd> -->
-        <!--     </t> -->
-        <!--   </dl> -->
+        <!-- <h1><t t-esc="object.display_name"/></h1> -->
+        <!-- <dl> -->
+        <!-- <t t-foreach="object._fields" t-as="field"> -->
+        <!-- <dt><t t-esc="field"/></dt> -->
+        <!-- <dd><t t-esc="object[field]"/></dd> -->
+        <!-- </t> -->
+        <!-- </dl> -->
         <!-- </template> -->
-        <template id="index">
-            <title>Academy</title>
+        <!-- <template id="currency_converter.index">
+            <title>Currency Rate</title>
             <t t-foreach="currency_rates" t-as="currency_rate">
-                <p><t t-esc="teacher.id"/> <t t-esc="teacher.currency_id"/><t t-esc="teacher.rate"/></p>
+                <p><t t-esc="currency_rate.id"/>
+                    <t t-esc="currency_rate.currency_id"/><t t-esc="currency_rate.rate"/>
+                </p>
             </t>
+        </template> -->
+        <template id="wow">
+            <title>Currency Rate</title>
         </template>
     </data>
 </odoo>

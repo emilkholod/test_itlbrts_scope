@@ -18,8 +18,9 @@ class CurrencyConverter(http.Controller):
         currency_rate = CurrencyRate.search([])
         # print(currency_rate.read(['id', 'currency_id', 'rate']))
         # return json.dumps(currency_rate.read(['id', 'currency_id', 'rate']))
-        return http.request.render('currency_converter.index',
-                                   {'currency_rates': currency_rate})
+        # return http.request.render('currency_converter.index',
+        #                            {'currency_rates': currency_rate})
+        return http.request.render('currency_converter.wow', {})
 
 
 #     @http.route('/currency_converter/currency_converter/objects/<model("currency_converter.currency_converter"):obj>/', auth='public')
