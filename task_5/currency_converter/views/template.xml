@@ -21,8 +21,9 @@
                                     <t t-esc="currency_rate"/>
                                 </a>
                             </td>
-                            <td><t t-esc="currency_rate_value"/></p>
-                        </td>
+                            <td><t t-esc="currency_rate_value"/></td>
+
+                        </tr>
                     </t>
                 </tbody>
             </table>

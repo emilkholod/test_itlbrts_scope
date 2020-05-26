@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from odoo import http
-import json
+from collections import OrderedDict
 
 
 class CurrencyConverter(http.Controller):
-    @http.route('/wow/', auth='public')
+    @http.route('/hello/', auth='public')
     def index(self, **kw):
         return "Hello, world"
 
@@ -26,14 +26,6 @@ class CurrencyConverter(http.Controller):
 
         for k, v in out.items():
             out[k] = v / out[new_base_curr_name.upper()]
-        # sorted_out = dict(sorted(out.items(), key=lambda x: x[0]))
+        sorted_out = OrderedDict(sorted(out.items(), key=lambda x: x[0]))
         return http.request.render('currency_converter.wow',
-                                   {'currency_rates': out})
-        # return http.request.render('currency_converter.wow', {})
-
-
-#     @http.route('/currency_converter/currency_converter/objects/<model("currency_converter.currency_converter"):obj>/', auth='public')
-#     def object(self, obj, **kw):
-#         return http.request.render('currency_converter.object', {
-#             'object': obj
-#         })
+                                   {'currency_rates': sorted_out})
