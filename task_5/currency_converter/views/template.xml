@@ -2,7 +2,14 @@
 <odoo>
     <template id="wow">
         <t t-call="website.layout">
-            <title>Currency Rate</title>
+            Hello world!
+            <t t-foreach="currency_rates" t-as="currency_rate">
+                <p>
+                    <a t-attf-href="/{{currency_rate}}/">
+                        <t t-esc="currency_rate"/>
+                    </a>
+                    <t t-esc="currency_rate_value"/></p>
+            </t>
         </t>
     </template>
 </odoo>

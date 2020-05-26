@@ -12,15 +12,22 @@ class CurrencyConverter(http.Controller):
     def redirect_to_eur(self, **kw):
         return http.request.redirect('/currencies/eur/')
 
-    @http.route('/currencies/eur/', auth='public', website=True)
-    def currencies(self, **kw):
+    @http.route('/currencies/<new_base_curr_name>/',
+                auth='public',
+                website=True)
+    def currencies(self, new_base_curr_name, **kw):
         CurrencyRate = http.request.env['res.currency.rate']
-        currency_rate = CurrencyRate.search([])
-        # print(currency_rate.read(['id', 'currency_id', 'rate']))
-        # return json.dumps(currency_rate.read(['id', 'currency_id', 'rate']))
-        # return http.request.render('currency_converter.index',
-        #                            {'currency_rates': currency_rate})
-        return http.request.render('currency_converter.wow', {})
+        list_of_curr_rates = CurrencyRate.search([]).read(
+            ['id', 'currency_id', 'rate'])
+        out = {}
+        for curr_rate in list_of_curr_rates:
+            out[curr_rate['currency_id'][1]] = curr_rate['rate']
+
+        for k, v in out.items():
+            out[k] = v / out[new_base_curr_name.upper()]
+        return http.request.render('currency_converter.wow',
+                                   {'currency_rates': out})
+        # return http.request.render('currency_converter.wow', {})
 
 
 #     @http.route('/currency_converter/currency_converter/objects/<model("currency_converter.currency_converter"):obj>/', auth='public')
