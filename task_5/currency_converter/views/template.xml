@@ -30,4 +30,13 @@
             </table>
         </t>
     </template>
+    <template id="currency_not_found">
+        <t t-call="website.layout">
+            <div class="oe_structure">
+                <div class="container">
+                    <h1>Currency not found!</h1>
+                </div>
+            </div>
+        </t>
+    </template>
 </odoo>

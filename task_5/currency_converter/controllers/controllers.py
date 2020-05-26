@@ -25,8 +25,14 @@ class CurrencyConverter(http.Controller):
         for curr_rate in list_of_curr_rates:
             out[curr_rate['currency_id'][1]] = curr_rate['rate']
 
+        try:
+            new_base_curr_rate = out[new_base_curr_name.upper()]
+        except KeyError:
+            return http.request.render('currency_converter.currency_not_found',
+                                       {})
+
         for k, v in out.items():
-            out[k] = v / out[new_base_curr_name.upper()]
+            out[k] = v / new_base_curr_rate
 
         sorted_out = OrderedDict(sorted(out.items(), key=lambda x: x[0]))
         return http.request.render(
