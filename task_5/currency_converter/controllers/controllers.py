@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
-from odoo import http
 from collections import OrderedDict
+
+from odoo import http
 
 
 class CurrencyConverter(http.Controller):
     @http.route('/hello/', auth='public')
     def index(self, **kw):
-        return "Hello, world"
+        return "Hello, world!"
 
     @http.route('/currencies/', auth='public', website=True)
     def redirect_to_eur(self, **kw):
@@ -26,6 +27,9 @@ class CurrencyConverter(http.Controller):
 
         for k, v in out.items():
             out[k] = v / out[new_base_curr_name.upper()]
+
         sorted_out = OrderedDict(sorted(out.items(), key=lambda x: x[0]))
-        return http.request.render('currency_converter.wow',
-                                   {'currency_rates': sorted_out})
+        return http.request.render(
+            'currency_converter.currency_converter_table',
+            {'currency_rates': sorted_out},
+        )
